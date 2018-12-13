@@ -8,9 +8,9 @@ public class Game {
     private int shotsMade = 0;
     
     private void setUpGame(){
-        Ships one = new Ships();
-        Ships two = new Ships();
-        Ships three = new Ships();     
+        Ships one = new Ships(4);
+        Ships two = new Ships(4);
+        Ships three = new Ships(3);     
         enemyShips.add(one);
         enemyShips.add(two);
         enemyShips.add(three);
@@ -20,7 +20,7 @@ public class Game {
         System.out.println("Постарайтесь не израсходовать весь боеприпас :D");
         
         for (Ships shipsSet : enemyShips) {
-            ArrayList<String> newLoc = helper.placeShip(3);
+            ArrayList<String> newLoc = helper.placeShip(shipsSet.getSize());
             shipsSet.setLoc(newLoc);
         }
     }

@@ -4,6 +4,15 @@ import java.util.*;
 
 class Ships {
     private ArrayList<String> locationCells;
+    private final int size;
+    
+    Ships(int size){
+        this.size = size;
+    }
+
+    public int getSize() {
+        return size;
+    }
 
     public void setLoc(ArrayList<String> newLoc) {
         locationCells = newLoc;
