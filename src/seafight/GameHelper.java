@@ -36,22 +36,32 @@ class GameHelper {
         boolean success = false;
         int location = 0;
         
+        
+//определяем точку для размещения:
+//если чет - то распологаем горизонтально
+//если нечет - вертикально
         shipCount++;
         int increment = 1;
         if((shipCount % 2) == 1){
             increment = gridLength;
         }
         
-        while(!success && attempts++ < 200){
+//главный цикл для установки кораблей
+//используем Math.random() и предполагаем, что ячейка не занята
+        while(!success && attempts++ < 1000){
             location = (int) (Math.random() *gridSize);
 //            System.out.println("location " + location);
             
             int x = 0;
             success = true;
             while(success && x < shipSize){
+//проверяем доступность ячейки, если ячейка не занята
+//то помещаем в неё элемент корабля
+//если занята, то начинаем по новой
                 if(grid[location] == 0){
                     coords[x++] = location;
                     location += increment;
+//проверка на выход за границы поля
                     if(location >= gridSize){
                         success = false;
                     }
@@ -70,6 +80,7 @@ class GameHelper {
         int column = 0;
 //        System.out.println("\n");
         
+//главный цикл установки кораблей, продолжается на весь shipSize
         while(x < shipSize){
             grid[coords[x]] = 1;
             row = (int) (coords[x] / gridLength);
