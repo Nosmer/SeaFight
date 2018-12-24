@@ -11,7 +11,7 @@ class GameHelper {
     private int[] grid = new int[gridSize];
     private int shipCount = 0;
     
-    public String getUserInput(String prompt) {
+    public final String getUserInput(String prompt) {
         String inputLine = null;
         System.out.println(prompt+" ");
         try{
@@ -27,7 +27,7 @@ class GameHelper {
         return inputLine.toLowerCase();
     }
 
-    public ArrayList<String> placeShip(int shipSize) {
+    public final ArrayList<String> placeShip(int shipSize) {
         ArrayList<String> alphaCells = new ArrayList<String>();
         String[] alphacoords = new String[shipSize];
         String temp = null;
@@ -92,8 +92,8 @@ class GameHelper {
 //            System.out.println("coord" +x+ " = " +alphaCells.get(x-1));
         }
 //        System.out.println("\n");
-        
-        return alphaCells;
+                
+        return alphaCells;        
     }
        
 }

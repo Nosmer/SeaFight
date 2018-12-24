@@ -9,14 +9,41 @@ class Ships {
     Ships(int size){
         this.size = size;
     }
+    
+//принимает в себя значение адреса из метода placeShip() из GameHelper
+    public void setLoc(ArrayList<String> newLoc) {
+        locationCells = newLoc;
+    }
 
     public int getSize() {
         return size;
     }
 
-//принимает в себя значение адреса из метода placeShip() из GameHelper
-    public void setLoc(ArrayList<String> newLoc) {
-        locationCells = newLoc;
+//Обязательно переопределяем equals(), hashCode() и toString() !!!
+    @Override
+    public boolean equals(Object otherObject){
+        if(this == otherObject) return true;
+        if(otherObject == null) return false;
+        if(getClass() != otherObject.getClass()) return false;
+        Ships other = (Ships) otherObject;
+        return size == other.size
+            && locationCells.equals(other.locationCells);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.locationCells);
+        hash = 37 * hash + this.size;
+        return hash;
+    }
+    
+    @Override
+    public String toString(){
+        return getClass().getName()
+            + "[locationCells= " + locationCells
+            + ", size= " + size
+            + "]";
     }
 
     public String checkShip(String playerMove) {
